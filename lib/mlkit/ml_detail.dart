@@ -216,10 +216,14 @@ class _MLDetailState extends State<MLDetail> {
   }
 
   Future<Size> _getImageSize(Image image) {
-    Completer<Size> completer = Completer<Size>();
+    Completer<Size> completer = new Completer<Size>();
     image.image.resolve(ImageConfiguration()).addListener(
-        (ImageInfo info, bool _) => completer.complete(
-            Size(info.image.width.toDouble(), info.image.height.toDouble())));
+        ImageStreamListener((ImageInfo info, bool _)
+        {
+          completer.complete(
+            Size(info.image.width.toDouble(), info.image.height.toDouble())
+          );
+        }));
     return completer.future;
   }
 }
