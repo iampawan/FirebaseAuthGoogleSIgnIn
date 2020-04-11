@@ -1,10 +1,7 @@
 import 'package:flutfire/CrudApp/crud_sample.dart';
-import 'package:flutfire/QuotesApp/quotes.dart';
-import 'package:flutfire/WallpaperApp/wall_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
-import 'package:flutfire/QuotesApp/backdrop.dart';
 
 void main() => runApp(new MyApp());
 

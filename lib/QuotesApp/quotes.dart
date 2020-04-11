@@ -18,14 +18,14 @@ class _QuotesScreenState extends State<QuotesScreen> {
         child: new Icon(Icons.extension),
         isExtended: true,
         onPressed: () => debugPrint('Clicked'),
-        notchMargin: 8.0,
+        // notchMargin: 8.0,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
       bottomNavigationBar: new BottomAppBar(
           color: Colors.purple,
           elevation: 5.0,
-          hasNotch: true,
+          // hasNotch: true,
           child: new ButtonBar(
             alignment: MainAxisAlignment.start,
             children: <Widget>[],

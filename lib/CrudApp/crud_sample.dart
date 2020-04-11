@@ -18,22 +18,26 @@ class CrudSampleState extends State<CrudSample> {
   final DocumentReference documentReference =
       Firestore.instance.document("myData/dummy");
 
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  final GoogleSignIn googleSignIn = new GoogleSignIn();
+  Future<FirebaseUser> _handleSignIn() async {
+    final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser.authentication;
 
-  Future<FirebaseUser> _signIn() async {
-    GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
-    GoogleSignInAuthentication gSA = await googleSignInAccount.authentication;
+    final AuthCredential credential = GoogleAuthProvider.getCredential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
 
-    FirebaseUser user = await _auth.signInWithGoogle(
-        idToken: gSA.idToken, accessToken: gSA.accessToken);
-
-    print("User Name : ${user.displayName}");
+    final FirebaseUser user =
+        (await _auth.signInWithCredential(credential)).user;
+    print("signed in " + user.displayName);
     return user;
   }
 
   void _signOut() {
-    googleSignIn.signOut();
+    _googleSignIn.signOut();
     print("User Signed out");
   }
 
@@ -107,7 +111,7 @@ class CrudSampleState extends State<CrudSample> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             new RaisedButton(
-              onPressed: () => _signIn()
+              onPressed: () => _handleSignIn()
                   .then((FirebaseUser user) => print(user))
                   .catchError((e) => print(e)),
               child: new Text("Sign In"),
