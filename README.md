@@ -1,6 +1,6 @@
 # FlutFire
 
-A Flutter project with implementation of all firebase libraries for Android and iOS both.
+A Flutter project with implementation of all firebase libraries for Android and iOS both website design.
 
 ### Show some :heart: and star the repo to support the project
 
