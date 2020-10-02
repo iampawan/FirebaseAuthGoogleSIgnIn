@@ -18,13 +18,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       debugShowCheckedModeBanner: false,
+      initialRoute: "crud_sample",
+      routes: {
+       "crud_sample": (context) => CrudSample(),
+       "quotes": (context) => QuotesScreen(),
+      },
       title: 'Flutter Demo',
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
-      navigatorObservers: <NavigatorObserver>[observer],
-      // home: new WallScreen(analytics: analytics, observer: observer),
-      home: new CrudSample(),
     );
   }
 }
