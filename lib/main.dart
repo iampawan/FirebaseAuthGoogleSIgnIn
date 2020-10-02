@@ -21,10 +21,7 @@ class MyApp extends StatelessWidget {
       initialRoute: "crud_sample",
       routes: {
        "crud_sample": (context) => CrudSample(),
-//        "signup": (context) => SignupScreen(),
-//        "login": (context) => LoginScreen(),
-//        "home": (context) => Myhome(),
-//        "sup": (context) => Sup(),
+       "quotes": (context) => QuotesScreen(),
       },
       title: 'Flutter Demo',
       theme: new ThemeData(
